@@ -1,3 +1,7 @@
+"""
+This module provides the main Flask application for subtitle translation.
+"""
+
 import os
 from flask import Flask, request, jsonify
 from translation import translate_text
@@ -9,6 +13,7 @@ app = Flask(__name__)
 
 @app.route('/translate', methods=['POST'])
 def translate():
+    """Translate a given text to a target language."""
     data = request.json
     text = data.get('text')
     source_lang = data.get('source_lang')
@@ -19,10 +24,12 @@ def translate():
 
 @app.route('/languages', methods=['GET'])
 def get_languages():
+    """Get the list of supported languages."""
     return jsonify(LANGUAGES)
 
 @app.route('/translate_srt', methods=['POST'])
 def translate_srt():
+    """Translate subtitles in a specified folder."""
     data = request.json
     folder_path = data.get('folder_path')
     target_langs = data.get('target_langs', ['EN'])
@@ -33,6 +40,7 @@ def translate_srt():
 
 @app.route('/translate_bulk', methods=['POST'])
 def translate_bulk():
+    """Translate subtitles in multiple root folders."""
     data = request.json
     root_folders = data.get('root_folders', [])
     target_langs = data.get('target_langs', ['EN'])
@@ -47,6 +55,7 @@ def translate_bulk():
 
 @app.route('/translate_wanted', methods=['POST'])
 def translate_wanted():
+    """Fetch wanted subtitles from Bazarr and translate them."""
     data = request.json
     bazarr_url = "http://bazarr:6767/api"
     api_key = os.getenv('BAZARR_API_KEY')
