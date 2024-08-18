@@ -1,3 +1,8 @@
+"""
+supported_languages.py
+This module defines supported languages and their file extensions.
+"""
+
 LANGUAGES = {
     "EN": {"name": "English", "extension": ".en.srt"},
     "DE": {"name": "German", "extension": ".de.srt"},
@@ -28,5 +33,5 @@ LANGUAGES = {
     "LT": {"name": "Lithuanian", "extension": ".lt.srt"},
     "LV": {"name": "Latvian", "extension": ".lv.srt"},
     "SL": {"name": "Slovenian", "extension": ".sl.srt"}
-    # Add more languages if/when DeepL make them available
+    # Add more languages as needed
 }

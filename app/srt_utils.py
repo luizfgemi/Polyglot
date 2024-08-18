@@ -1,8 +1,14 @@
+"""
+srt_utils.py
+This module provides functions for handling subtitle files.
+"""
+
 import os
 from translation import translate_text
 from language_utils import get_file_extension, get_language_code_from_extension
 
 def translate_srt_files(folder_path, target_langs, source_lang=None):
+    """Translate subtitle files in a specified folder to target languages."""
     translated_files = []
 
     if not os.path.isdir(folder_path):

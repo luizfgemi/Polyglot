@@ -1,7 +1,13 @@
+"""
+translation.py
+This module provides functions for translating text using the DeepL API.
+"""
+
 import os
 import requests
 
 def translate_text(text, source_lang, target_lang):
+    """Translate text from source language to target language using DeepL API."""
     auth_key = os.getenv('DEEPL_AUTH_KEY')
     url = "https://api.deepl.com/v2/translate"
     params = {
