@@ -1,0 +1,15 @@
+services:
+  polyglot:
+    container_name: polyglot
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - DEEPL_AUTH_KEY=
+      - BAZARR_URL=http://localhost:6767
+      # - BAZARR_BASE_URL= # Optional
+      - BAZARR_API_KEY=
+    volumes:
+      - ./path/to/your/media:/media
