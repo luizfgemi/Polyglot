@@ -1,8 +1,3 @@
-"""
-translation.py
-This module provides functions for translating text using the DeepL API.
-"""
-
 import os
 import requests
 

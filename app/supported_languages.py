@@ -1,8 +1,3 @@
-"""
-supported_languages.py
-This module defines supported languages and their file extensions.
-"""
-
 LANGUAGES = {
     "EN": {"name": "English", "extension": ".en.srt"},
     "DE": {"name": "German", "extension": ".de.srt"},
