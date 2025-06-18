@@ -123,10 +123,29 @@ curl -X POST http://localhost:5000/translate_srt -H "Content-Type: application/j
 - Response:
 ```json
 {
-    "translated_files": [
+"translated_files": [
         "/media/Filmes/Exterminador do Futuro/pt-BR.srt",
         "/media/Filmes/Exterminador do Futuro/es.srt"
     ]
+}
+```
+
+### Translate Wanted Subtitles
+
+Use the `/translate_wanted` endpoint to automatically translate all subtitles
+marked as "wanted" in your Bazarr instance.
+
+Required environment variables:
+
+- `BAZARR_URL` – the base URL of your Bazarr API
+- `BAZARR_API_KEY` – your Bazarr API key
+
+Example request:
+
+```bash
+curl -X POST http://localhost:5000/translate_wanted -H "Content-Type: application/json" -d '{
+    "target_langs": ["PT-BR"],
+    "source_lang": "EN"
 }
 ```
 
