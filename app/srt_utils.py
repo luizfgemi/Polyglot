@@ -16,7 +16,7 @@ def translate_srt_files(folder_path, target_langs, source_lang=None):
             target_file_extension = get_file_extension(target_lang)
 
             for srt_file in existing_srt_files:
-                if srt_file.endswith(target_file_extension):
+                if srt_file.lower().endswith(target_file_extension):
                     continue
 
                 file_source_lang = source_lang or get_language_code_from_extension(srt_file)
@@ -29,7 +29,7 @@ def translate_srt_files(folder_path, target_langs, source_lang=None):
                     content = file.read()
 
                 translated_file_path = os.path.join(
-                    dirpath, f"{os.path.splitext(srt_file)[0]}.{target_lang}.srt"
+                    dirpath, f"{os.path.splitext(srt_file)[0]}{target_file_extension}"
                 )
                 with open(translated_file_path, 'w', encoding='utf-8') as file:
                     file.write(translate_text(content, file_source_lang, target_lang))

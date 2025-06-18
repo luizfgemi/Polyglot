@@ -73,6 +73,7 @@ docker-compose up
     "PL": {"name": "Polish", "extension": ".pl.srt"},
     "RU": {"name": "Russian", "extension": ".ru.srt"},
     "PT": {"name": "Portuguese", "extension": ".pt.srt"},
+    "PT-BR": {"name": "Brazilian Portuguese", "extension": ".pt-br.srt"},
     "JA": {"name": "Japanese", "extension": ".ja.srt"},
     "ZH": {"name": "Chinese", "extension": ".zh.srt"},
     "DA": {"name": "Danish", "extension": ".da.srt"},
