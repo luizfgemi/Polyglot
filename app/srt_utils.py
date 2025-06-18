@@ -1,6 +1,10 @@
 import os
 from translation import translate_text
-from language_utils import get_file_extension, get_language_code_from_extension
+from language_utils import (
+    get_file_extension,
+    get_language_code_from_extension,
+)
+from supported_languages import LANGUAGES
 
 def translate_srt_files(folder_path, target_langs, source_lang=None):
     translated_files = []
@@ -28,8 +32,17 @@ def translate_srt_files(folder_path, target_langs, source_lang=None):
                 with open(file_path, 'r', encoding='utf-8') as file:
                     content = file.read()
 
+                base = srt_file
+                for lang in LANGUAGES.values():
+                    if srt_file.endswith(lang["extension"]):
+                        base = srt_file[: -len(lang["extension"])]
+                        break
+                else:
+                    if srt_file.endswith(".srt"):
+                        base = srt_file[:-4]
+
                 translated_file_path = os.path.join(
-                    dirpath, f"{os.path.splitext(srt_file)[0]}.{target_lang}.srt"
+                    dirpath, f"{base}.{target_lang}.srt"
                 )
                 with open(translated_file_path, 'w', encoding='utf-8') as file:
                     file.write(translate_text(content, file_source_lang, target_lang))
