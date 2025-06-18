@@ -52,7 +52,8 @@ def translate_bulk():
 @app.route('/translate_wanted', methods=['POST'])
 def translate_wanted():
     data = request.json
-    bazarr_url = "http://bazarr:6767/api"
+    bazarr_base = os.getenv('BAZARR_URL', 'http://bazarr:6767')
+    bazarr_url = bazarr_base.rstrip('/') + '/api'
     api_key = os.getenv('BAZARR_API_KEY')
     target_langs = data.get('target_langs', ['EN'])
     source_lang = data.get('source_lang')
