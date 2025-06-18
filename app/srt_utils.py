@@ -19,8 +19,8 @@ def translate_srt_files(folder_path, target_langs, source_lang=None):
                 if srt_file.endswith(target_file_extension):
                     continue
 
-                source_lang = source_lang or get_language_code_from_extension(srt_file)
-                if not source_lang:
+                file_source_lang = source_lang or get_language_code_from_extension(srt_file)
+                if not file_source_lang:
                     print(f'Error: Could not determine source language for {srt_file}')
                     continue
 
@@ -32,7 +32,7 @@ def translate_srt_files(folder_path, target_langs, source_lang=None):
                     dirpath, f"{os.path.splitext(srt_file)[0]}.{target_lang}.srt"
                 )
                 with open(translated_file_path, 'w', encoding='utf-8') as file:
-                    file.write(translate_text(content, source_lang, target_lang))
+                    file.write(translate_text(content, file_source_lang, target_lang))
 
                 translated_files.append(translated_file_path)
 
