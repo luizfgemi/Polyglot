@@ -12,9 +12,11 @@ def translate_text(text, source_lang, target_lang):
         'target_lang': target_lang
     }
 
-    response = requests.post(url, data=params)
-    if response.status_code != 200:
-        raise Exception(f'Translation error: {response.text}')
+    try:
+        response = requests.post(url, data=params, timeout=10)
+        response.raise_for_status()
+    except requests.RequestException as e:
+        raise RuntimeError(f'Translation error: {e}') from e
 
     translation = response.json()
     return translation['translations'][0]['text']
